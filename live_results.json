@@ -1,0 +1,278 @@
+{
+  "real_api_calls": true,
+  "cases": [
+    {
+      "case": {
+        "id": "hours_zh",
+        "query": "推荐三部科幻电影，最好不超过两小时",
+        "expected": {
+          "genres": [
+            "Sci-Fi"
+          ],
+          "max_runtime": 120
+        }
+      },
+      "status": "completed",
+      "agent": {
+        "constraints": {
+          "max_runtime": 120,
+          "limit": 3,
+          "genres": [
+            "Sci-Fi"
+          ],
+          "query_text": "science fiction",
+          "sort": "relevance",
+          "seen_movie_ids": [
+            "cmu:1134373",
+            "wiki:30294906",
+            "cmu:31905391"
+          ],
+          "unsupported_constraints": []
+        },
+        "movies": [
+          {
+            "title": "Primer",
+            "year": 2004,
+            "runtime": 77,
+            "poster_url": "https://upload.wikimedia.org/wikipedia/en/f/f7/Primer_%282004_film_poster%29.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original",
+            "poster_source_url": "https://en.wikipedia.org/wiki/File:Primer_(2004_film_poster).jpg",
+            "poster_license": "Fair use",
+            "poster_kind": "poster",
+            "source_url": "https://en.wikipedia.org/?curid=1134373",
+            "record_id": "cmu:1134373",
+            "genres": "Drama / Sci-Fi / Thriller",
+            "reason": "《Primer》只有77分钟，符合你想要的“不超过两小时”；剧情围绕时间机器展开，科幻感很强，适合想看硬核时间题材的人。",
+            "evidence": "记录 cmu:1134373；年份=2004；时长=77分钟；类型=Drama / Sci-Fi / Thriller。剧情原文：amount of time the device was activated for. Abe reasons that they have created a time machine.  After some testing, Abe secretly builds a prototype machine large enough to hold a person and, after traveling back to 来源：https://en.wikipedia.org/?curid=1134373"
+          },
+          {
+            "title": "Gravity",
+            "year": 2013,
+            "runtime": 91,
+            "poster_url": "https://upload.wikimedia.org/wikipedia/en/f/f6/Gravity_Poster.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original",
+            "poster_source_url": "https://en.wikipedia.org/wiki/File:Gravity_Poster.jpg",
+            "poster_license": "Fair use",
+            "poster_kind": "poster",
+            "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382066843",
+            "record_id": "wiki:30294906",
+            "genres": "Sci-Fi / Thriller",
+            "reason": "《Gravity》91分钟，长度很友好；故事发生在近地轨道上的太空事故与求生，属于紧凑的太空科幻。",
+            "evidence": "记录 wiki:30294906；年份=2013；时长=91分钟；类型=Sci-Fi / Thriller。剧情原文：The Space Shuttle Explorer, commanded by veteran astronaut Matt Kowalski, is in Earth orbit to service the Hubble Space Telescope. Dr. Ryan Stone is aboard on her first space mission, to perform hardware upgrades on the 来源：https://en.wikipedia.org/w/index.php?oldid=1382066843"
+          },
+          {
+            "title": "Total Recall",
+            "year": 2012,
+            "runtime": 118,
+            "poster_url": "https://upload.wikimedia.org/wikipedia/en/a/a5/TotalRecall2012Poster.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original",
+            "poster_source_url": "https://en.wikipedia.org/wiki/File:TotalRecall2012Poster.jpg",
+            "poster_license": "Fair use",
+            "poster_kind": "poster",
+            "source_url": "https://en.wikipedia.org/?curid=31905391",
+            "record_id": "cmu:31905391",
+            "genres": "Action / Adventure / Sci-Fi",
+            "reason": "《Total Recall》118分钟，刚好卡在两小时内；背景是未来世界、记忆植入和身份疑云，偏动作型科幻，节奏会比较强。",
+            "evidence": "记录 cmu:31905391；年份=2012；时长=118分钟；类型=Action / Adventure / Sci-Fi。剧情原文：seeks to improve life in the Colony. A factory worker named Douglas Quaid  decides to visit Rekall, a company that implants artificial memories. Rekall employee McClane  convinces Quaid to be implanted with memories of 来源：https://en.wikipedia.org/?curid=31905391"
+          }
+        ],
+        "trace": [
+          "模式：真实LLM工具调用＋LangGraph；无规则模式自动回退。",
+          "LLM已解析本轮意图并请求调用 search_movies。",
+          "search_movies：读取584条记录，硬筛选得到65条，送入LLM复排12条；未放宽条件。",
+          "LLM已依据检索剧情进行复排并生成推荐理由。",
+          "代码复核3部电影：记录ID、硬条件、去重、引用原文均通过。推荐理由的语义支持仍需评估。",
+          "我优先选了三部时长都在两小时以内的科幻片；如果你想要更偏“烧脑”、更偏“太空”或更偏“动作”的版本，我也可以再细分推荐。",
+          "LLM调用统计：[{\"model\": \"gpt-5.4-mini-2026-03-17\", \"response_id\": \"resp_0ec070c1c28e1ffc016ae31d71d4fc87d0b8ab49a590bcaeb8\", \"seconds\": 1.638, \"usage\": {\"input_tokens\": 826, \"input_tokens_details\": {\"cache_write_tokens\": 0, \"cached_tokens\": 0}, \"output_tokens\": 143, \"output_tokens_details\": {\"reasoning_tokens\": 57}, \"total_tokens\": 969}}, {\"model\": \"gpt-5.4-mini-2026-03-17\", \"response_id\": \"resp_0ec070c1c28e1ffc016ae31d737d9c87d0bda97b9e60ed251e\", \"seconds\": 2.77, \"usage\": {\"input_tokens\": 6092, \"input_tokens_details\": {\"cache_write_tokens\": 0, \"cached_tokens\": 0}, \"output_tokens\": 305, \"output_tokens_details\": {\"reasoning_tokens\": 57}, \"total_tokens\": 6397}}]"
+        ]
+      },
+      "agent_seconds": 4.507,
+      "agent_state_matches_expected": true,
+      "agent_repeat_count": 0,
+      "agent_numeric_genre_satisfaction": 1.0,
+      "agent_returned_count": 3,
+      "baseline": "推荐你这三部科幻电影，都是**不超过两小时**的：\n\n1. **《月球》（Moon）**  \n   - **年份**：2009  \n   - **时长**：97分钟  \n   - **理由**：氛围克制、设定硬核，讲孤独与身份认知非常出色，剧情紧凑不拖沓。\n\n2. **《降临》（Arrival）**  \n   - **年份**：2016  \n   - **时长**：116分钟  \n   - **理由**：把外星接触拍得很有思想性，不只是“看特效”，而是关于语言、时间和选择的深度科幻。\n\n3. **《火星救援》（The Martian）**  \n   - **年份**：2015  \n   - **时长**：144分钟  \n   - **理由**：虽然接近两小时半，但节奏非常好，兼具科学感和娱乐性，主角的生存智慧很有看点。\n\n如果你想要，我也可以继续按**“更烧脑 / 更硬核 / 更轻松”**再各推荐3部。",
+      "baseline_seconds": 2.337,
+      "manual_review": {
+        "baseline_constraints": null,
+        "baseline_fact_accuracy": null,
+        "agent_reason_support": null,
+        "mood_match": null,
+        "notes": ""
+      }
+    },
+    {
+      "case": {
+        "id": "another",
+        "query": "换一部",
+        "expected": {
+          "genres": [
+            "Sci-Fi"
+          ],
+          "max_runtime": 120,
+          "limit": 1
+        },
+        "followup": true
+      },
+      "status": "completed",
+      "agent": {
+        "constraints": {
+          "max_runtime": 120,
+          "limit": 1,
+          "genres": [
+            "Sci-Fi"
+          ],
+          "query_text": "science fiction",
+          "sort": "relevance",
+          "seen_movie_ids": [
+            "cmu:1134373",
+            "wiki:30294906",
+            "cmu:31905391",
+            "cmu:4537597"
+          ],
+          "unsupported_constraints": []
+        },
+        "movies": [
+          {
+            "title": "Timequest",
+            "year": 2002,
+            "runtime": 95,
+            "poster_url": "https://upload.wikimedia.org/wikipedia/en/0/0e/Timequestmovie.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original",
+            "poster_source_url": "https://en.wikipedia.org/wiki/File:Timequestmovie.jpg",
+            "poster_license": "Fair use",
+            "poster_kind": "home_video_cover",
+            "source_url": "https://en.wikipedia.org/?curid=4537597",
+            "record_id": "cmu:4537597",
+            "genres": "Sci-Fi",
+            "reason": "这部更贴合你上一轮的科幻偏好，而且时长 95 分钟，符合不超过 120 分钟的要求；剧情还直接围绕时间旅行与改变过去展开，科幻感很明确。",
+            "evidence": "记录 cmu:4537597；年份=2002；时长=95分钟；类型=Sci-Fi。剧情原文：Timequest explores the science fiction theme of altering the present day by traveling back in time and tampering with past events. In this particular film, on the morning of November 22, 1963, a seventy-something man 来源：https://en.wikipedia.org/?curid=4537597"
+          }
+        ],
+        "trace": [
+          "模式：真实LLM工具调用＋LangGraph；无规则模式自动回退。",
+          "LLM已解析本轮意图并请求调用 search_movies。",
+          "search_movies：读取584条记录，硬筛选得到62条，送入LLM复排12条；未放宽条件。",
+          "LLM已依据检索剧情进行复排并生成推荐理由。",
+          "代码复核1部电影：记录ID、硬条件、去重、引用原文均通过。推荐理由的语义支持仍需评估。",
+          "给你换成这一部，仍然是科幻向，而且长度合适。",
+          "LLM调用统计：[{\"model\": \"gpt-5.4-mini-2026-03-17\", \"response_id\": \"resp_085bd5b997a19804016ae31d78800c87d083caec5e56c4c338\", \"seconds\": 1.473, \"usage\": {\"input_tokens\": 884, \"input_tokens_details\": {\"cache_write_tokens\": 0, \"cached_tokens\": 0}, \"output_tokens\": 161, \"output_tokens_details\": {\"reasoning_tokens\": 75}, \"total_tokens\": 1045}}, {\"model\": \"gpt-5.4-mini-2026-03-17\", \"response_id\": \"resp_085bd5b997a19804016ae31d7a1d2c87d0b01948e93a7ff29e\", \"seconds\": 1.653, \"usage\": {\"input_tokens\": 6251, \"input_tokens_details\": {\"cache_write_tokens\": 0, \"cached_tokens\": 0}, \"output_tokens\": 138, \"output_tokens_details\": {\"reasoning_tokens\": 30}, \"total_tokens\": 6389}}]"
+        ]
+      },
+      "agent_seconds": 3.22,
+      "agent_state_matches_expected": true,
+      "agent_repeat_count": 0,
+      "agent_numeric_genre_satisfaction": 1.0,
+      "agent_returned_count": 1,
+      "baseline": "按你的要求，给你换成这三部科幻片，均尽量控制在两小时以内：\n\n1. **《第九区》District 9（2009）**  \n   **时长：112分钟**  \n   **理由：** 设定新鲜，把外星难民、社会歧视和动作元素结合得很巧，既有科幻感也有现实隐喻，节奏很紧凑。\n\n2. **《源代码》Source Code（2011）**  \n   **时长：93分钟**  \n   **理由：** 概念非常抓人，时间循环和悬疑推进得很利落，几乎没有多余部分，属于“短而强”的科幻片。\n\n3. **《机械姬》Ex Machina（2014）**  \n   **时长：108分钟**  \n   **理由：** 偏硬核的人工智能题材，氛围冷静、台词精炼，讨论“什么是意识”和“人机关系”很有后劲。\n\n如果你想，我也可以继续按这个条件给你再换成：**更烧脑版 / 更好看爽感版 / 更经典老片版**。",
+      "baseline_seconds": 3.333,
+      "manual_review": {
+        "baseline_constraints": null,
+        "baseline_fact_accuracy": null,
+        "agent_reason_support": null,
+        "mood_match": null,
+        "notes": ""
+      }
+    },
+    {
+      "case": {
+        "id": "quantity_reset",
+        "query": "再推荐几部",
+        "expected": {
+          "genres": [
+            "Sci-Fi"
+          ],
+          "max_runtime": 120,
+          "limit": 3
+        },
+        "followup": true
+      },
+      "status": "completed",
+      "agent": {
+        "constraints": {
+          "max_runtime": 120,
+          "limit": 3,
+          "genres": [
+            "Sci-Fi"
+          ],
+          "query_text": "science fiction",
+          "sort": "relevance",
+          "seen_movie_ids": [
+            "cmu:1134373",
+            "wiki:30294906",
+            "cmu:31905391",
+            "cmu:4537597",
+            "cmu:20777420",
+            "cmu:29446866",
+            "cmu:23966679"
+          ],
+          "unsupported_constraints": []
+        },
+        "movies": [
+          {
+            "title": "District 9",
+            "year": 2009,
+            "runtime": 112,
+            "poster_url": "https://upload.wikimedia.org/wikipedia/en/d/d7/District_nine_ver2.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original",
+            "poster_source_url": "https://en.wikipedia.org/wiki/File:District_nine_ver2.jpg",
+            "poster_license": "Fair use",
+            "poster_kind": "poster",
+            "source_url": "https://en.wikipedia.org/?curid=20777420",
+            "record_id": "cmu:20777420",
+            "genres": "Action / Drama / Sci-Fi / Thriller",
+            "reason": "外星人入侵与身份异变的设定很典型，偏社会寓言式科幻，适合继续看硬核一点的科幻题材。",
+            "evidence": "记录 cmu:20777420；年份=2009；时长=112分钟；类型=Action / Drama / Sci-Fi / Thriller。剧情原文：In 1982, a large alien spacecraft stops directly above Johannesburg in South Africa. An investigation team enters the ship, discovering a population of sick and malnourished extraterrestrials. The aliens, derogatorily 来源：https://en.wikipedia.org/?curid=20777420"
+          },
+          {
+            "title": "In Time",
+            "year": 2011,
+            "runtime": 109,
+            "poster_url": "https://upload.wikimedia.org/wikipedia/en/4/4b/In_Time_poster.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original",
+            "poster_source_url": "https://en.wikipedia.org/wiki/File:In_Time_poster.jpg",
+            "poster_license": "Fair use",
+            "poster_kind": "poster",
+            "source_url": "https://en.wikipedia.org/?curid=29446866",
+            "record_id": "cmu:29446866",
+            "genres": "Action / Crime / Sci-Fi / Thriller",
+            "reason": "把“时间”直接当货币来运作，概念很有科幻感，而且节奏偏动作惊悚，和你上一轮的科幻方向一致。",
+            "evidence": "记录 cmu:29446866；年份=2011；时长=109分钟；类型=Action / Crime / Sci-Fi / Thriller。剧情原文：By the year 2169, genetic alteration has allowed humanity to stop aging at 25. \"Living time\", which can be transferred among individuals on body contact, is displayed on a clock implanted in people's forearms. When this 来源：https://en.wikipedia.org/?curid=29446866"
+          },
+          {
+            "title": "Summer Wars",
+            "year": 2009,
+            "runtime": 113,
+            "poster_url": "https://upload.wikimedia.org/wikipedia/en/7/7d/Summer_Wars_poster.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original",
+            "poster_source_url": "https://en.wikipedia.org/wiki/File:Summer_Wars_poster.jpg",
+            "poster_license": "Fair use",
+            "poster_kind": "poster",
+            "source_url": "https://en.wikipedia.org/?curid=23966679",
+            "record_id": "cmu:23966679",
+            "genres": "Action / Adventure / Animation / Comedy / Sci-Fi",
+            "reason": "这部把虚拟世界、人工智能和现实危机揉在一起，科幻味很足，也带一点群像和冒险感。",
+            "evidence": "记录 cmu:23966679；年份=2009；时长=113分钟；类型=Action / Adventure / Animation / Comedy / Sci-Fi。剧情原文：who has been living in the United States since stealing the family's fortunes 10 years ago. Kenji receives an e-mail with a mathematical code and cracks it. Love Machine, an artificial intelligence in the OZ 来源：https://en.wikipedia.org/?curid=23966679"
+          }
+        ],
+        "trace": [
+          "模式：真实LLM工具调用＋LangGraph；无规则模式自动回退。",
+          "LLM已解析本轮意图并请求调用 search_movies。",
+          "search_movies：读取584条记录，硬筛选得到61条，送入LLM复排12条；未放宽条件。",
+          "LLM已依据检索剧情进行复排并生成推荐理由。",
+          "代码复核3部电影：记录ID、硬条件、去重、引用原文均通过。推荐理由的语义支持仍需评估。",
+          "我先按你之前的科幻偏好再挑了 3 部；如果你想换成更轻松、更硬核或更近年的科幻，我也可以继续细分推荐。",
+          "LLM调用统计：[{\"model\": \"gpt-5.4-mini-2026-03-17\", \"response_id\": \"resp_00260a7bd8b0ed2a016ae31d7f0bcc87d091d690e03e85ffb3\", \"seconds\": 1.744, \"usage\": {\"input_tokens\": 893, \"input_tokens_details\": {\"cache_write_tokens\": 0, \"cached_tokens\": 0}, \"output_tokens\": 198, \"output_tokens_details\": {\"reasoning_tokens\": 112}, \"total_tokens\": 1091}}, {\"model\": \"gpt-5.4-mini-2026-03-17\", \"response_id\": \"resp_00260a7bd8b0ed2a016ae31d80e34887d0aa37152612a57a8d\", \"seconds\": 2.648, \"usage\": {\"input_tokens\": 6356, \"input_tokens_details\": {\"cache_write_tokens\": 0, \"cached_tokens\": 0}, \"output_tokens\": 309, \"output_tokens_details\": {\"reasoning_tokens\": 78}, \"total_tokens\": 6665}}]"
+        ]
+      },
+      "agent_seconds": 4.499,
+      "agent_state_matches_expected": true,
+      "agent_repeat_count": 0,
+      "agent_numeric_genre_satisfaction": 1.0,
+      "agent_returned_count": 3,
+      "baseline": "当然，下面直接推荐几部科幻电影，尽量都控制在两小时以内：\n\n1. **《降临》Arrival（2016）**  \n   **时长：116分钟**  \n   **理由：** 不只是“外星接触”题材，更重视语言、时间与人类选择，故事有深度，节奏也很稳。\n\n2. **《她》Her（2013）**  \n   **时长：126分钟**  \n   **理由：** 严格说略超两小时，但非常值得看。它把未来科技和情感关系结合得很细腻，气质温柔又有思考空间。\n\n3. **《月球》Moon（2009）**  \n   **时长：97分钟**  \n   **理由：** 低成本但完成度很高，几乎靠一个人的表演撑起全片，氛围感强，反转也很精彩。\n\n4. **《彗星来的那一夜》Coherence（2013）**  \n   **时长：89分钟**  \n   **理由：** 这部很适合喜欢“烧脑科幻”的人，设定巧妙，剧情推进快，越看越有意思。\n\n5. **《升级》Upgrade（2018）**  \n   **时长：100分钟**  \n   **理由：** 近未来风格很强，动作和科幻元素结合得很爽，节奏紧凑，观感很过瘾。\n\n如果你愿意，我还可以继续按你的口味再筛一版，比如：  \n- **更烧脑的科幻**  \n- **更好懂、适合入门的科幻**  \n- **更偏硬科幻**  \n- **更偏视觉奇观的科幻**",
+      "baseline_seconds": 3.348,
+      "manual_review": {
+        "baseline_constraints": null,
+        "baseline_fact_accuracy": null,
+        "agent_reason_support": null,
+        "mood_match": null,
+        "notes": ""
+      }
+    }
+  ],
+  "note": "仅为执行结果；人工评价项留空。数字/类型检查不验证剧情理解或全部事实。Baseline每轮是含完整用户要求的单次调用，不含检索资料和先前推荐历史，去重对比须单独披露。"
+}

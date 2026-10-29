@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-29",
+  "model_configured": "gpt-5.4-mini",
+  "models_reported": [
+    "gpt-5.4-mini-2026-03-17"
+  ],
+  "real_llm_success": true,
+  "scope": "3-turn smoke test; not a full effectiveness evaluation or browser integration test",
+  "agent_turns_completed": 3,
+  "baseline_turns_completed": 3,
+  "counts": [
+    3,
+    1,
+    3
+  ],
+  "repeat_counts": [
+    0,
+    0,
+    0
+  ],
+  "automated_tests_passed": 37,
+  "diagnostics": "Earlier credit_balance_exhausted resolved. gpt-5-mini subsequently returned model_not_found. Free-text quote validation was unreliable; final version selects source snippet IDs and inserts original text in code."
+}
